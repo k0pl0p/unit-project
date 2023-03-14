@@ -1,0 +1,90 @@
+$width: 60px;
+$height: 60px;
+
+$lineWidth: 20px;
+$lineHeight: 3px;
+
+.nav-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: $width;
+    height: $height;
+    border-radius: 50%;
+    background-color: #fff;
+
+    cursor: pointer;
+    transition: background-color 0.2s ease-in;
+
+    &:hover {
+        background-color: #00C470;
+
+        .nav-icon__middle,
+        .nav-icon__middle::before,
+        .nav-icon__middle::after {
+            background-color: #fff;
+        }
+    }
+}
+
+.nav-icon__middle {
+    position: relative;
+
+    width: $lineWidth;
+    height: $lineHeight;
+    background-color: #000;
+
+    transition: background-color 0.2s ease-in;
+
+    &::before {
+        content: "";
+    
+        position: absolute;
+        top: -7px;
+        left: 0;
+    
+        width: $lineWidth;
+        height: $lineHeight;
+        background-color: #000;
+    
+        transition: background-color 0.2s ease-in, transform 0.2s ease-in, top 0.2s ease-in 0.2s;
+    }
+
+    &::after {
+        content: "";
+    
+        position: absolute;
+        bottom: -7px;
+        left: 0;
+    
+        width: $lineWidth;
+        height: $lineHeight;
+        background-color: #000;
+    
+        transition: background-color 0.2s ease-in, transform 0.2s ease-in, bottom 0.2s ease-in 0.2s;
+    }
+}
+
+.nav-icon.nav-icon--active {
+    position: fixed;
+    z-index: 999;
+}
+
+.nav-icon.nav-icon--active .nav-icon__middle {
+    background-color: transparent;
+    transition: background-color 0.2s ease-in;
+
+    &::before {
+        transform: rotate(45deg);
+        top: 0;
+    
+        transition: background-color 0.2s ease-in, top 0.2s ease-in, transform 0.2s ease-in 0.2s;
+    }
+
+    &::after {
+        transform: rotate(-45deg);
+        bottom: 0;
+    
+        transition: background-color 0.2s ease-in, bottom 0.2s ease-in, transform 0.2s ease-in 0.2s;
+    }
+}
